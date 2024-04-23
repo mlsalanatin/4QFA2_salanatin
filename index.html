@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Multiplication Table Generator</title>
+</head>
+<body>
+    <form onsubmit="return table()">
+        <h3>Enter a number between 2️⃣ and 🔟: </h3>
+
+        <input type="text" id="n1" placeholder="Enter number of rows">
+        <span>by</span>
+        <input type="text" id="n2" placeholder="Enter number of columns">
+        <br><br>
+
+        <input type="submit" value="Click here when ready!">
+        <br><br>
+        <div id="multTable"></div>
+    </form>
+
+    <script>
+        function table(){
+            document.getElementById("multTable").innerHTML = "  ";
+            var n1 = document.getElementById("n1").value;
+            var n2 = document.getElementById("n2").value;
+
+            if ((n1 > 10 || n2 < 2) || isNaN(n1) == true){
+                alert("ENTER A NUMBER BETWEEN 2-10!!!!!");
+                return false;
+            }
+            else if ((n1 > 10 || n2 < 2) || isNaN(n2) == true){
+                alert("ENTER A NUMBER BETWEEN 2-10!!!!!");
+                return false;
+            }
+
+            let table = [];
+
+            for (x=1; x<=n1; x++){
+                let row = [];
+
+                for (let y=1; y<=n2; y++){
+                    row.push(x*y);
+                }
+
+                table.push(row);
+            }
+
+            var output = document.getElementById("multTable");
+
+            for (const row of table){
+                output.innerHTML += row.join('\t') + '<br>'; 
+            }
+
+            var result = output.innerHTML;
+            console.log(result);
+
+            return false;
+        }
+    </script>
+</body>
+</html>
